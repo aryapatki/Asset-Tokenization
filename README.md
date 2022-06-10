@@ -58,6 +58,49 @@ ERC-721 Standard | ERC-20 or ERC-777
 - Does distribution happen in realtime or after crowdsale
 - Can Participants recieve refund if goal is not met
 
-### 3. Local Development with Truffle ### 
-### 4. In-Depth Truffle-Config file using Mnemonics ### 
-### 5. Deployment to Public Networks or Consortium Network ### 
+### 2. Local Development with Truffle ### 
+**Initialisation**
+1. update versions of truffle, node, npm
+    npm install -g truffle node npm
+2. download truffle box template 
+    truffle unbox react
+3. remove SimpleStorage.sol,2_deploy_contracts.js, both files in test folder
+
+**Add ERC20 Smart Contract**
+1. $ npm install @openzeppelin/contracts
+2. import contract in MyToken.sol
+3. Copy Basic Syntax from documentation ( https://docs.openzeppelin.com/contracts/4.x/erc20 )
+
+**Run Smart Contract**
+1. Truffle Compile 
+(Update version of truffle in truffle-config.js " https://trufflesuite.com/docs/truffle/reference/configuration/ ")
+(If truffle version is not recognised, try same command with sudo)
+(Always check if solidity version of project matches version of ERC20)
+(also try uninstalling and reinstalling truffle "npm uninstall -g truffle")
+2. truffle developer
+3. truffle migrate (inside truffle developer console)
+
+**install unit testing libraries**
+npm install --save chai chai-bn chai-as-promised
+Write chai code in test folder
+
+**Connect to Ganache Server**
+in truffle-config.js : change 
+
+develop: {
+      port: 8545
+    } 
+
+    to
+
+development: {
+      port: 7545,
+      network_id:5777,
+      host:"127.0.0.1"
+    }
+
+**Testing**
+Write Testing with the help of following resources:
+
+### 3. In-Depth Truffle-Config file using Mnemonics ### 
+### 4. Deployment to Public Networks or Consortium Network ### 
